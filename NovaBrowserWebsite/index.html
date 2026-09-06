@@ -1,0 +1,2184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NovaBrowser — The Future of Browsing</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #08090d;
+            color: white;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes fadeUp {
+
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 30px rgba(99, 60, 200, 0.25);
+            }
+
+            50% {
+                box-shadow: 0 0 55px rgba(99, 60, 200, 0.45);
+            }
+
+        }
+
+
+        /* =========================
+           NAVIGATION
+        ========================= */
+
+        nav {
+
+            height: 80px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 0 8%;
+
+            border-bottom: 1px solid #171923;
+
+            background: rgba(8, 9, 13, 0.95);
+
+            animation:
+                fadeUp 0.6s ease forwards;
+
+        }
+
+
+        .logo {
+
+            font-size: 25px;
+
+            font-weight: bold;
+
+            letter-spacing: -1px;
+
+        }
+
+
+        .logo span {
+
+            color: #8b5cf6;
+
+        }
+
+
+        nav div {
+
+            display: flex;
+
+            gap: 28px;
+
+        }
+
+
+        nav a {
+
+            color: #aaa;
+
+            text-decoration: none;
+
+            font-size: 15px;
+
+            transition: 0.2s;
+
+        }
+
+
+        nav a:hover {
+
+            color: white;
+
+            transform: translateY(-1px);
+
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+
+            text-align: center;
+
+            padding: 120px 20px 70px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(99, 61, 180, 0.18),
+                    transparent 45%
+                );
+
+            animation:
+                fadeUp 0.8s ease forwards;
+
+        }
+
+
+        .hero h1 {
+
+            font-size: 64px;
+
+            line-height: 1.1;
+
+            margin-bottom: 20px;
+
+            letter-spacing: -2px;
+
+            text-shadow:
+                0 0 35px rgba(120, 80, 255, 0.25);
+
+        }
+
+
+        .hero h1 span {
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #8b5cf6,
+                    #3b82f6
+                );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+        .hero p {
+
+            max-width: 650px;
+
+            margin: 0 auto 35px;
+
+            color: #999;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =========================
+           HERO BUTTONS
+        ========================= */
+
+        .hero-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .download-btn {
+
+            display: inline-block;
+
+            padding: 16px 32px;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #7c3aed,
+                    #2563eb
+                );
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+            animation:
+                glow 3s ease-in-out infinite;
+
+            transition: 0.25s;
+
+            box-shadow:
+                0 0 30px rgba(99, 60, 200, 0.3);
+
+        }
+
+
+        .download-btn:hover {
+
+            transform:
+                translateY(-4px)
+                scale(1.02);
+
+        }
+
+
+        .features-btn {
+
+            display: inline-block;
+
+            padding: 16px 32px;
+
+            border-radius: 10px;
+
+            background: #12141c;
+
+            border: 1px solid #303443;
+
+            color: #ddd;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 16px;
+
+            transition: 0.25s;
+
+        }
+
+
+        .features-btn:hover {
+
+            transform: translateY(-4px);
+
+            border-color: #6550a8;
+
+            color: white;
+
+            background: #171923;
+
+        }
+
+
+        /* =========================
+           BROWSER PREVIEW
+        ========================= */
+
+        .browser-preview {
+
+            padding: 20px 8% 100px;
+
+            display: flex;
+
+            justify-content: center;
+
+            animation:
+                fadeUp 1s ease forwards;
+
+            animation-delay: 0.15s;
+
+            opacity: 0;
+
+        }
+
+
+        .browser-window {
+
+            width: 1000px;
+
+            max-width: 100%;
+
+            height: 560px;
+
+            background: #0c0e14;
+
+            border: 1px solid #292d3b;
+
+            border-radius: 18px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 40px 100px rgba(0, 0, 0, 0.55),
+                0 0 80px rgba(100, 60, 200, 0.15);
+
+            transition: 0.4s ease;
+
+        }
+
+
+        .browser-window:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 45px 110px rgba(0, 0, 0, 0.6),
+                0 0 90px rgba(100, 60, 200, 0.22);
+
+        }
+
+
+        /* =========================
+           TAB BAR
+        ========================= */
+
+        .browser-top {
+
+            height: 50px;
+
+            background: #141620;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 16px;
+
+            border-bottom: 1px solid #242735;
+
+        }
+
+
+        .window-buttons {
+
+            display: flex;
+
+            gap: 8px;
+
+            margin-right: 25px;
+
+        }
+
+
+        .window-buttons span {
+
+            width: 12px;
+
+            height: 12px;
+
+            border-radius: 50%;
+
+            background: #454857;
+
+        }
+
+
+        /* =========================
+           TABS
+        ========================= */
+
+        #tabs {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            height: 100%;
+
+            overflow-x: auto;
+
+        }
+
+
+        .browser-tab {
+
+            height: 34px;
+
+            min-width: 180px;
+
+            max-width: 220px;
+
+            padding: 0 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            background: #0c0e14;
+
+            border-radius:
+                9px 9px 0 0;
+
+            color: #aaa;
+
+            font-size: 13px;
+
+            border: 1px solid #252938;
+
+            border-bottom: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+
+        }
+
+
+        .browser-tab:hover {
+
+            background: #171923;
+
+            color: white;
+
+        }
+
+
+        .browser-tab.active {
+
+            background: #0c0e14;
+
+            color: white;
+
+            border-color: #363b4d;
+
+        }
+
+
+        .tab-title {
+
+            overflow: hidden;
+
+            white-space: nowrap;
+
+            text-overflow: ellipsis;
+
+        }
+
+
+        .tab-close {
+
+            margin-left: auto;
+
+            color: #777;
+
+            font-size: 15px;
+
+            padding: 2px 4px;
+
+            border-radius: 5px;
+
+        }
+
+
+        .tab-close:hover {
+
+            background: #242735;
+
+            color: white;
+
+        }
+
+
+        .new-tab {
+
+            margin-left: 8px;
+
+            color: #777;
+
+            font-size: 21px;
+
+            cursor: pointer;
+
+            width: 30px;
+
+            height: 30px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 7px;
+
+            transition: 0.2s;
+
+        }
+
+
+        .new-tab:hover {
+
+            background: #242735;
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           ADDRESS BAR
+        ========================= */
+
+        .browser-bar {
+
+            height: 58px;
+
+            background: #10121a;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 0 20px;
+
+            border-bottom: 1px solid #242735;
+
+        }
+
+
+        .browser-controls {
+
+            display: flex;
+
+            gap: 14px;
+
+            color: #777;
+
+            font-size: 19px;
+
+        }
+
+
+        .control {
+
+            width: 25px;
+
+            text-align: center;
+
+            transition: 0.2s;
+
+            cursor: pointer;
+
+        }
+
+
+        .control:hover {
+
+            color: white;
+
+        }
+
+
+        .address-bar {
+
+            flex: 1;
+
+            height: 36px;
+
+            display: flex;
+
+            align-items: center;
+
+            background: #181b25;
+
+            border: 1px solid #292d3b;
+
+            border-radius: 10px;
+
+            padding: 0 15px;
+
+            transition: 0.25s;
+
+        }
+
+
+        .address-bar:focus-within {
+
+            border-color: #6550a8;
+
+            box-shadow:
+                0 0 20px rgba(99, 60, 200, 0.12);
+
+        }
+
+
+        .address-bar span {
+
+            color: #666;
+
+            margin-right: 8px;
+
+        }
+
+
+        .search-input {
+
+            flex: 1;
+
+            background: transparent;
+
+            border: none;
+
+            outline: none;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+        }
+
+
+        .search-input::placeholder {
+
+            color: #666;
+
+        }
+
+
+        .browser-action {
+
+            color: #777;
+
+            font-size: 18px;
+
+            transition: 0.2s;
+
+            cursor: pointer;
+
+        }
+
+
+        .browser-action:hover {
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           BROWSER CONTENT
+        ========================= */
+
+        .browser-content {
+
+            height: calc(100% - 108px);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(99, 61, 180, 0.18),
+                    transparent 45%
+                );
+
+            overflow: hidden;
+
+        }
+
+
+        .nova-icon {
+
+            width: 90px;
+
+            height: 90px;
+
+            border-radius: 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 42px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #2563eb
+                );
+
+            box-shadow:
+                0 0 30px rgba(139, 92, 246, 0.45),
+                0 0 70px rgba(37, 99, 235, 0.25);
+
+            margin-bottom: 25px;
+
+            animation:
+                glow 3s ease-in-out infinite;
+
+        }
+
+
+        .nova-mark {
+
+            font-size: 44px;
+
+            font-weight: bold;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 10px;
+
+            text-shadow:
+                0 0 25px rgba(139, 92, 246, 0.2);
+
+        }
+
+
+        .nova-mark span {
+
+            color: #8b5cf6;
+
+        }
+
+
+        .browser-content p {
+
+            color: #777;
+
+            font-size: 16px;
+
+        }
+
+
+        /* =========================
+           HOME SEARCH
+        ========================= */
+
+        .fake-search {
+
+            margin-top: 30px;
+
+            width: 430px;
+
+            max-width: 80%;
+
+            height: 46px;
+
+            background: #151821;
+
+            border: 1px solid #292d3b;
+
+            border-radius: 12px;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 0 17px;
+
+            color: #666;
+
+            font-size: 14px;
+
+            transition: 0.25s;
+
+        }
+
+
+        .fake-search:focus-within {
+
+            border-color: #6550a8;
+
+            box-shadow:
+                0 0 25px rgba(99, 60, 200, 0.15);
+
+        }
+
+
+        /* =========================
+           QUICK LINKS
+        ========================= */
+
+        .quick-links {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 14px;
+
+            margin-top: 22px;
+
+        }
+
+
+        .quick-link {
+
+            width: 95px;
+
+            height: 75px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            background: #11131b;
+
+            border: 1px solid #242735;
+
+            border-radius: 12px;
+
+            color: #888;
+
+            font-size: 12px;
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            transition: 0.25s;
+
+        }
+
+
+        .quick-link:hover {
+
+            transform: translateY(-5px);
+
+            background: #171923;
+
+            border-color: #4b3b78;
+
+            color: white;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.3),
+                0 0 25px rgba(99, 60, 200, 0.12);
+
+        }
+
+
+        .quick-icon {
+
+            width: 28px;
+
+            height: 28px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 8px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #8b5cf6,
+                    #2563eb
+                );
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: bold;
+
+        }
+
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .features {
+
+            padding: 80px 8%;
+
+        }
+
+
+        .features h2 {
+
+            text-align: center;
+
+            font-size: 38px;
+
+            margin-bottom: 50px;
+
+        }
+
+
+        .cards {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .card {
+
+            background: #101119;
+
+            border: 1px solid #1c1e29;
+
+            border-radius: 16px;
+
+            padding: 35px;
+
+            transition: 0.3s;
+
+            animation:
+                fadeUp 0.8s ease forwards;
+
+        }
+
+
+        .card:hover {
+
+            transform: translateY(-8px);
+
+            border-color: #44307a;
+
+            box-shadow:
+                0 15px 45px rgba(0, 0, 0, 0.35);
+
+        }
+
+
+        .card h3 {
+
+            margin-bottom: 15px;
+
+            font-size: 22px;
+
+        }
+
+
+        .card p {
+
+            color: #999;
+
+            line-height: 1.6;
+
+        }
+
+
+        /* =========================
+           DOWNLOAD
+        ========================= */
+
+        .download-section {
+
+            text-align: center;
+
+            padding: 100px 20px;
+
+            background: #0c0d12;
+
+            border-top: 1px solid #171923;
+
+            border-bottom: 1px solid #171923;
+
+        }
+
+
+        .download-section h2 {
+
+            font-size: 42px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .download-section p {
+
+            color: #999;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .coming-soon {
+
+            display: inline-block;
+
+            padding: 14px 28px;
+
+            border-radius: 10px;
+
+            border: 1px solid #333746;
+
+            color: #aaa;
+
+            transition: 0.25s;
+
+        }
+
+
+        .coming-soon:hover {
+
+            border-color: #6550a8;
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 35px;
+
+            color: #666;
+
+            font-size: 14px;
+
+        }
+
+
+        footer a {
+
+            color: #777;
+
+            text-decoration: none;
+
+            transition: 0.2s;
+
+        }
+
+
+        footer a:hover {
+
+            color: white;
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            nav {
+
+                padding: 0 5%;
+
+            }
+
+
+            nav div {
+
+                gap: 12px;
+
+            }
+
+
+            nav a {
+
+                font-size: 13px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 45px;
+
+            }
+
+
+            .cards {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .browser-window {
+
+                height: 500px;
+
+            }
+
+
+            .browser-controls {
+
+                font-size: 15px;
+
+                gap: 7px;
+
+            }
+
+
+            .fake-search {
+
+                width: 350px;
+
+            }
+
+
+            .quick-links {
+
+                gap: 7px;
+
+            }
+
+
+            .quick-link {
+
+                width: 72px;
+
+            }
+
+
+            .browser-tab {
+
+                min-width: 140px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <nav>
+
+        <div class="logo">
+            Nova<span>Browser</span>
+        </div>
+
+
+        <div>
+
+            <a href="#">
+                Home
+            </a>
+
+            <a href="pages/features.html">
+                Features
+            </a>
+
+            <a href="pages/about.html">
+                About
+            </a>
+
+            <a href="pages/contact.html">
+                Contact
+            </a>
+
+            <a href="pages/download.html">
+                Download
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- =========================
+         HERO
+    ========================= -->
+
+    <section class="hero">
+
+        <h1>
+
+            The browser built for
+
+            <span>
+                what's next.
+            </span>
+
+        </h1>
+
+
+        <p>
+
+            NovaBrowser is a fast, modern browser designed
+            to make the web smoother, cleaner and more enjoyable.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <a
+                class="download-btn"
+                href="pages/download.html"
+            >
+                Download NovaBrowser
+            </a>
+
+
+            <a
+                class="features-btn"
+                href="pages/features.html"
+            >
+                Explore Features
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         BROWSER
+        ========================= -->
+
+    <section class="browser-preview">
+
+        <div class="browser-window">
+
+
+            <!-- TAB BAR -->
+
+            <div class="browser-top">
+
+
+                <div class="window-buttons">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+
+                </div>
+
+
+                <div id="tabs"></div>
+
+
+                <div
+                    class="new-tab"
+                    id="newTabButton"
+                    title="New Tab"
+                >
+                    +
+                </div>
+
+            </div>
+
+
+
+            <!-- ADDRESS BAR -->
+
+            <div class="browser-bar">
+
+
+                <div class="browser-controls">
+
+                    <div
+                        class="control"
+                        onclick="goBack()"
+                        title="Back"
+                    >
+                        ←
+                    </div>
+
+
+                    <div
+                        class="control"
+                        onclick="goForward()"
+                        title="Forward"
+                    >
+                        →
+                    </div>
+
+
+                    <div
+                        class="control"
+                        onclick="reloadPage()"
+                        title="Reload"
+                    >
+                        ↻
+                    </div>
+
+                </div>
+
+
+                <div class="address-bar">
+
+                    <span>
+                        🔒
+                    </span>
+
+
+                    <input
+                        id="addressInput"
+                        class="search-input"
+                        type="text"
+                        placeholder="Search the web with Nova"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <div
+                    class="browser-action"
+                    title="Bookmark"
+                >
+                    ☆
+                </div>
+
+
+                <div
+                    class="browser-action"
+                    title="Menu"
+                >
+                    ⋮
+                </div>
+
+            </div>
+
+
+
+            <!-- PAGE CONTENT -->
+
+            <div
+                class="browser-content"
+                id="browserContent"
+            >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FEATURES
+    ========================= -->
+
+    <section class="features">
+
+        <h2>
+            Why NovaBrowser?
+        </h2>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    ⚡ Fast
+                </h3>
+
+                <p>
+                    Built with performance in mind so
+                    websites load quickly and browsing
+                    feels smooth.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🎵 Music
+                </h3>
+
+                <p>
+                    Enjoy your music while browsing with
+                    a powerful built-in music experience.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    🎨 Beautiful
+                </h3>
+
+                <p>
+                    A clean, modern interface designed
+                    to make browsing look and feel better.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         DOWNLOAD
+    ========================= -->
+
+    <section class="download-section">
+
+        <h2>
+            Ready for Nova?
+        </h2>
+
+
+        <p>
+            NovaBrowser is currently being built.
+        </p>
+
+
+        <div class="coming-soon">
+
+            Windows version coming soon
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
+
+    <footer>
+
+        © 2026 NovaBrowser.
+        All rights reserved.
+
+        <br>
+        <br>
+
+        <a href="pages/privacy.html">
+            Privacy Policy
+        </a>
+
+    </footer>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* =========================
+           TAB DATA
+        ========================= */
+
+        let tabs = [
+
+            {
+                id: 1,
+                title: "NovaBrowser",
+                url: "",
+                active: true
+            }
+
+        ];
+
+
+        let activeTabId = 1;
+
+        let nextTabId = 2;
+
+
+
+        /* =========================
+           TAB ELEMENT
+        ========================= */
+
+        function createTabElement(tab) {
+
+            const tabElement =
+                document.createElement("div");
+
+            tabElement.className =
+                "browser-tab";
+
+
+            if (tab.active) {
+
+                tabElement.classList.add(
+                    "active"
+                );
+
+            }
+
+
+            tabElement.onclick = function() {
+
+                switchTab(tab.id);
+
+            };
+
+
+            const icon =
+                document.createElement("span");
+
+            icon.textContent = "🌐";
+
+
+            const title =
+                document.createElement("span");
+
+            title.className =
+                "tab-title";
+
+            title.textContent =
+                tab.title;
+
+
+            const close =
+                document.createElement("span");
+
+            close.className =
+                "tab-close";
+
+            close.textContent =
+                "×";
+
+
+            close.onclick = function(event) {
+
+                event.stopPropagation();
+
+                closeTab(tab.id);
+
+            };
+
+
+            tabElement.appendChild(icon);
+
+            tabElement.appendChild(title);
+
+            tabElement.appendChild(close);
+
+
+            return tabElement;
+
+        }
+
+
+
+        /* =========================
+           RENDER TABS
+        ========================= */
+
+        function renderTabs() {
+
+            const tabsContainer =
+                document.getElementById("tabs");
+
+
+            tabsContainer.innerHTML = "";
+
+
+            tabs.forEach(function(tab) {
+
+                tabsContainer.appendChild(
+                    createTabElement(tab)
+                );
+
+            });
+
+        }
+
+
+
+        /* =========================
+           NEW TAB
+        ========================= */
+
+        function createNewTab() {
+
+            tabs.forEach(function(tab) {
+
+                tab.active = false;
+
+            });
+
+
+            const newTab = {
+
+                id: nextTabId,
+
+                title: "New Tab",
+
+                url: "",
+
+                active: true
+
+            };
+
+
+            nextTabId++;
+
+
+            tabs.push(newTab);
+
+
+            activeTabId =
+                newTab.id;
+
+
+            renderTabs();
+
+
+            showNewTabPage();
+
+        }
+
+
+
+        /* =========================
+           SWITCH TAB
+        ========================= */
+
+        function switchTab(id) {
+
+            tabs.forEach(function(tab) {
+
+                tab.active =
+                    tab.id === id;
+
+            });
+
+
+            activeTabId = id;
+
+
+            renderTabs();
+
+
+            const tab =
+                tabs.find(function(tab) {
+
+                    return tab.id === id;
+
+                });
+
+
+            if (!tab) {
+                return;
+            }
+
+
+            if (tab.url) {
+
+                showSearchPage(
+                    tab.url
+                );
+
+            } else {
+
+                showNewTabPage();
+
+            }
+
+        }
+
+
+
+        /* =========================
+           CLOSE TAB
+        ========================= */
+
+        function closeTab(id) {
+
+            if (tabs.length === 1) {
+
+                return;
+
+            }
+
+
+            const index =
+                tabs.findIndex(function(tab) {
+
+                    return tab.id === id;
+
+                });
+
+
+            if (index === -1) {
+
+                return;
+
+            }
+
+
+            const wasActive =
+                tabs[index].active;
+
+
+            tabs.splice(index, 1);
+
+
+            if (wasActive) {
+
+                const newIndex =
+                    Math.max(
+                        0,
+                        index - 1
+                    );
+
+
+                tabs[newIndex].active =
+                    true;
+
+
+                activeTabId =
+                    tabs[newIndex].id;
+
+            }
+
+
+            renderTabs();
+
+
+            const activeTab =
+                tabs.find(function(tab) {
+
+                    return tab.active;
+
+                });
+
+
+            if (activeTab.url) {
+
+                showSearchPage(
+                    activeTab.url
+                );
+
+            } else {
+
+                showNewTabPage();
+
+            }
+
+        }
+
+
+
+        /* =========================
+           NEW TAB PAGE
+        ========================= */
+
+        function showNewTabPage() {
+
+            const content =
+                document.getElementById(
+                    "browserContent"
+                );
+
+
+            content.innerHTML = `
+
+                <div class="nova-icon">
+                    ✦
+                </div>
+
+                <div class="nova-mark">
+                    Nova<span>Browser</span>
+                </div>
+
+                <p>
+                    The future of browsing.
+                </p>
+
+                <div class="fake-search">
+
+                    <span>
+                        🔍
+                    </span>
+
+                    <input
+                        id="homeSearch"
+                        class="search-input"
+                        type="text"
+                        placeholder="Search the web"
+                        autocomplete="off"
+                    >
+
+                </div>
+
+                <div class="quick-links">
+
+                    <a
+                        class="quick-link"
+                        href="https://www.youtube.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="quick-icon">
+                            ▶
+                        </div>
+
+                        <span>
+                            YouTube
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        class="quick-link"
+                        href="https://open.spotify.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="quick-icon">
+                            ♫
+                        </div>
+
+                        <span>
+                            Spotify
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        class="quick-link"
+                        href="https://github.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+
+                        <div class="quick-icon">
+                            ⌘
+                        </div>
+
+                        <span>
+                            GitHub
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        class="quick-link"
+                        href="index.html"
+                    >
+
+                        <div class="quick-icon">
+                            ✦
+                        </div>
+
+                        <span>
+                            Nova
+                        </span>
+
+                    </a>
+
+                </div>
+
+            `;
+
+
+            const search =
+                document.getElementById(
+                    "homeSearch"
+                );
+
+
+            search.focus();
+
+
+            search.addEventListener(
+                "keydown",
+                function(event) {
+
+                    if (
+                        event.key === "Enter"
+                    ) {
+
+                        searchWeb(
+                            search.value
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+
+        /* =========================
+           SEARCH
+        ========================= */
+
+        function searchWeb(query) {
+
+            query =
+                query.trim();
+
+
+            if (query === "") {
+
+                return;
+
+            }
+
+
+            const searchURL =
+                "https://www.google.com/search?q="
+                +
+                encodeURIComponent(
+                    query
+                );
+
+
+            const activeTab =
+                tabs.find(function(tab) {
+
+                    return tab.id === activeTabId;
+
+                });
+
+
+            if (activeTab) {
+
+                activeTab.title =
+                    query;
+
+                activeTab.url =
+                    searchURL;
+
+            }
+
+
+            renderTabs();
+
+
+            showSearchPage(
+                searchURL
+            );
+
+
+            window.open(
+                searchURL,
+                "_blank"
+            );
+
+        }
+
+
+
+        /* =========================
+           SEARCH PAGE
+        ========================= */
+
+        function showSearchPage(url) {
+
+            const content =
+                document.getElementById(
+                    "browserContent"
+                );
+
+
+            content.innerHTML = `
+
+                <div class="nova-icon">
+                    ✦
+                </div>
+
+                <div class="nova-mark">
+                    Nova<span>Browser</span>
+                </div>
+
+                <p>
+                    Opening your search...
+                </p>
+
+            `;
+
+        }
+
+
+
+        /* =========================
+           ADDRESS BAR
+        ========================= */
+
+        const addressInput =
+            document.getElementById(
+                "addressInput"
+            );
+
+
+        addressInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    searchWeb(
+                        addressInput.value
+                    );
+
+
+                    addressInput.value =
+                        "";
+
+                }
+
+            }
+        );
+
+
+
+        /* =========================
+           NEW TAB BUTTON
+        ========================= */
+
+        document
+            .getElementById("newTabButton")
+            .addEventListener(
+                "click",
+                createNewTab
+            );
+
+
+
+        /* =========================
+           BACK
+        ========================= */
+
+        function goBack() {
+
+            if (
+                window.history.length > 1
+            ) {
+
+                window.history.back();
+
+            }
+
+        }
+
+
+
+        /* =========================
+           FORWARD
+        ========================= */
+
+        function goForward() {
+
+            window.history.forward();
+
+        }
+
+
+
+        /* =========================
+           RELOAD
+        ========================= */
+
+        function reloadPage() {
+
+            window.location.reload();
+
+        }
+
+
+
+        /* =========================
+           START NOVA
+        ========================= */
+
+        renderTabs();
+
+        showNewTabPage();
+
+    </script>
+
+
+</body>
+
+</html>
