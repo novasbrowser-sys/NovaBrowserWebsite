@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Features — NovaBrowser</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #08090d;
+            color: white;
+        }
+
+        nav {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 60px;
+            border-bottom: 1px solid #20222b;
+            background: #0b0c11;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #6c63ff;
+        }
+
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            margin-left: 30px;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #6c63ff;
+        }
+
+        .hero p {
+            color: #a5a5b0;
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .features {
+            max-width: 1100px;
+            margin: auto;
+            padding: 40px 20px 100px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: #151720;
+            border: 1px solid #252836;
+            border-radius: 20px;
+            padding: 35px;
+        }
+
+        .icon {
+            font-size: 35px;
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #999daa;
+            line-height: 1.6;
+        }
+
+        .back {
+            display: block;
+            text-align: center;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 50px;
+        }
+
+        .back:hover {
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #777;
+            border-top: 1px solid #20222b;
+        }
+
+        @media (max-width: 700px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            nav {
+                padding: 0 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">
+            Nova<span>Browser</span>
+        </div>
+
+        <div>
+            <a href="../index.html">Home</a>
+            <a href="download.html">Download</a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>Powerful <span>features.</span></h1>
+
+        <p>
+            NovaBrowser is being designed to be fast,
+            beautiful and packed with useful features.
+        </p>
+    </section>
+
+    <section class="features">
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h2>Performance</h2>
+            <p>
+                Built with performance in mind, with a focus on
+                smooth browsing and efficient resource usage.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🌐</div>
+            <h2>Modern Web</h2>
+            <p>
+                A powerful Chromium-based browser engine designed
+                to support the modern web.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎵</div>
+            <h2>Music</h2>
+            <p>
+                Built-in music features and an audio visualizer
+                for an interactive browsing experience.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🎨</div>
+            <h2>Beautiful Design</h2>
+            <p>
+                A clean and modern interface with dark and light
+                themes.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">📑</div>
+            <h2>Tabs</h2>
+            <p>
+                Organize your browsing with fast and convenient
+                browser tabs.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔒</div>
+            <h2>Privacy</h2>
+            <p>
+                Privacy and security will be important parts of
+                NovaBrowser's design.
+            </p>
+        </div>
+
+    </section>
+
+    <a class="back" href="../index.html">
+        ← Back to NovaBrowser
+    </a>
+
+    <footer>
+        © 2026 NovaBrowser. All rights reserved.
+    </footer>
+
+</body>
+</html>
